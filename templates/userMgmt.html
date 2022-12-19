@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Admin User Management</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+</head>
+
+<body>
+    <h1>Welcome {{results["user"]}}</h1>
+
+    <form action="/logout">
+        <button type="submit ">LogOut</button>
+    </form>
+    <form action="/manageGroup">
+        <button type="submit ">Manage Group</button>
+    </form>
+
+    <form action="/groupMsg" method="POST">
+        <select name="group" id="group">
+            <option value="none">Select Group</option>
+            {% for group in results["Groups"] %}
+            <option>{{group}}</option>
+            {%endfor%}
+        </select>
+        <button>Group Message</button>
+    </form>
+
+
+
+</body>
+
+</html>

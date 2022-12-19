@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Admin User Management</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+    <script>
+        function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+
+            var table = document.getElementById("User");
+            var user = table.rows[i].cells[0].innerHTML;
+            console.log(user)
+
+            $.ajax({
+                type: 'POST',
+                url: '/delete',
+                data: {
+                    userName: user
+                },
+                success: function(result) {
+
+
+                },
+                error: function(result) {
+                    alert('error');
+                }
+            });
+        }
+
+        function createUser() {
+            console.log("User create")
+            $.ajax({
+                type: 'GET',
+                url: '/addUser',
+                success: function(result) {
+                    alert(result)
+                },
+                error: function(result) {
+                    alert('error');
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome {{results["admin"]}}</h1>
+    <h2>Existing Users</h2>
+    <table id="User">
+        <tr>
+            <th>UserName</th>
+        </tr>
+        {% for user in results["Users"] %}
+        <tr>
+            <td>{{user}}</td>
+            <td>
+                <button type="submit" onclick="deleteRow(this)">Delete</button>
+                <button type="submit">Edit</button>
+            </td>
+        </tr>
+        {%endfor%}
+
+    </table>
+
+
+    <form action="/Welcome">
+        <button type="submit">Create User</button>
+    </form>
+    <form action="/logout">
+        <button type="submit ">LogOut</button>
+    </form>
+    <form action="/manageGroup">
+        <button type="submit ">Manage Group</button>
+    </form>
+
+    <form action="/groupMsg" method="POST">
+        <select name="group" id="group">
+            <option value="none">Select Group</option>
+            {% for group in results["Groups"] %}
+            <option>{{group}}</option>
+            {%endfor%}
+        </select>
+        <button>Group Message</button>
+    </form>
+
+
+
+</body>
+
+</html>
