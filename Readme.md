@@ -19,7 +19,8 @@
   * manageGroup.html --> Manage Group Page for all users */manageGroup* & */creatGroup* endpoint 
   * messaging.html --> Messaging Page for users to chat */groupMsg* & */sendMessage* endpoint
   
-
+# Important Points
+* During User Creation please use **admin** as user Type to create admin user & **normal** for normal user
 
 # DB Details
 * Host: mysql-101015-0.cloudclusters.net
