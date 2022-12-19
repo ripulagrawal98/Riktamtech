@@ -8,6 +8,8 @@
 * sqlqueries.properties --> DB queries related to application
 * SQL.py    --> Program to load all the db queries at runtime from properties
 * db_functions.py --> Takes care of DB query execution basically DAO layer for this application
+* testcases/
+  * group_message_app_testcases.xlsx --> Testcases to run on application
 
 * templates/
   * signUp.html --> SignUp Page */Welcome* endpoint
